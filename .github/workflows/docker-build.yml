@@ -1,0 +1,33 @@
+name: Docker Build and Check
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build Docker image
+      run: docker build . --file Dockerfile -t nasa-api:latest
+
+    - name: Run Docker Container (Smoke Test)
+      run: |
+        docker run -d -p 3000:3000 --name test-container nasa-api:latest
+        sleep 5
+        docker ps | grep test-container
