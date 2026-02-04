@@ -29,9 +29,9 @@ jobs:
     - name: Run Docker Container (Smoke Test)
       env:
         # This pulls the secret you just saved in GitHub Settings
-        MY_NASA_KEY: ${{ secrets.YOUR_API_KEY }} 
+        YOUR_API_KEY: ${{ secrets.YOUR_API_KEY }} 
       run: |
         # We pass the secret into the container as an environment variable
-        docker run -d -p 3000:3000 --name test-container -e NASA_API_KEY=$MY_NASA_KEY nasa-api:latest
+        docker run -d -p 3000:3000 --name test-container -e NASA_API_KEY=$YOUR_API_KEY nasa-api:latest
         sleep 5
         docker ps | grep test-container
