@@ -1,0 +1,25 @@
+# Dependency directories
+# Prevents local modules from overwriting container modules
+node_modules
+npm-debug.log
+
+# Build outputs
+dist
+build
+
+# Environment secrets 
+# Crucial to prevent leaking your NASA API key into the image
+key.env
+.env
+
+# Git metadata
+.git
+.gitignore
+
+# Docker specific
+Dockerfile
+.dockerignore
+
+# Documentation and OS junk
+README.md
+.DS_Store
