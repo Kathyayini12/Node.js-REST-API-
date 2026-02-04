@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import fetch from 'node-fetch';
 
-dotenv.config({ path: 'key.env' });
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
